@@ -20,13 +20,8 @@ mkdir -p $BUILD_DIR/.heroku/vendor
 echo "-----> Install sox"
 tar -xvf `dirname $0`/../vulcan/sox.tar.gz -C $BUILD_DIR/.heroku/vendor
 
+echo "Creating sox entry in .profile.d"
 cat >$HOME/.profile.d/sox <<EOF
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.heroku/vendor/lib
 export PATH=$PATH:$HOME/.heroku/vendor/bin
 EOF
-
-echo "-----> Setting ENV variables"
-export LIBRARY_PATH=$LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_DIR/.heroku/vendor/lib/pkgconfig
-export CPATH=$CPATH:$BUILD_DIR/.heroku/vendor/include
