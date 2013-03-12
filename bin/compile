@@ -22,7 +22,7 @@ tar -xvf `dirname $0`/../vulcan/sox.tar.gz -C $BUILD_DIR/.heroku/vendor
 
 mkdir -p $BUILD_DIR/.profile.d
 echo "Creating sox entry in .profile.d"
-cat >$BUILD_DIR/.profile.d/sox <<EOF
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.heroku/vendor/lib
-export PATH=$PATH:$HOME/.heroku/vendor/bin
+cat >$BUILD_DIR/.profile.d/sox.sh <<EOF
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BUILD_DIR/.heroku/vendor/lib
+export PATH=$PATH:$BUILD_DIR/.heroku/vendor/bin
 EOF
