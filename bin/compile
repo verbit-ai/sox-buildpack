@@ -13,7 +13,6 @@ unset GIT_DIR
 # parse and derive params
 BUILD_DIR=$1
 CACHE_DIR=$2
-LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 mkdir -p $BUILD_DIR/.heroku/vendor
 
@@ -21,7 +20,7 @@ echo "-----> Install sox"
 tar -xvf `dirname $0`/../vulcan/sox.tar.gz -C $BUILD_DIR/.heroku/vendor
 
 mkdir -p $BUILD_DIR/.profile.d
-echo "Creating sox entry in .profile.d"
+echo "-----> Creating sox entry in .profile.d"
 cat >$BUILD_DIR/.profile.d/sox.sh <<EOF
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/.heroku/vendor/lib
 export PATH=$PATH:bin:/app/.heroku/vendor/bin
