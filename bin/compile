@@ -23,5 +23,5 @@ mkdir -p $BUILD_DIR/.profile.d
 echo "-----> Creating sox entry in .profile.d"
 cat >$BUILD_DIR/.profile.d/sox.sh <<EOF
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/.heroku/vendor/lib
-export PATH=$PATH:bin:/app/.heroku/vendor/bin
+export PATH=bin:/app/.heroku/vendor/bin:$PATH
 EOF
