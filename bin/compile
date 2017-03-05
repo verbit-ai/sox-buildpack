@@ -21,13 +21,19 @@ tar -xvf `dirname $0`/../vulcan/sox.tar.gz -C $BUILD_DIR/.heroku/vendor
 
 APP_CHECKOUT_DIR=$1
 
-echo "-----> Adding PATH environment"
-mkdir -p "$APP_CHECKOUT_DIR"/.profile.d
-cat > "$APP_CHECKOUT_DIR"/.profile.d/path.sh <<EOF
-  #!/bin/sh
-  export PATH=\$PATH:/app/.heroku/vendor/bin
-  export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/app/.heroku/vendor/lib
-EOF
+#echo "-----> Adding PATH environment"
+#mkdir -p "$APP_CHECKOUT_DIR"/.profile.d
+#cat > "$APP_CHECKOUT_DIR"/.profile.d/path.sh <<EOF
+#  #!/bin/sh
+#  export PATH=\$PATH:/app/.heroku/vendor/bin
+#  export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/app/.heroku/vendor/lib
+#EOF
 
-echo "SOX .sh file"
-cat $APP_CHECKOUT_DIR"/.profile.d/path.sh
+echo "exporting PATH and LIBRARY_PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/sox.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:/app/.heroku/vendor/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/.heroku/vendor/lib"' >> $PROFILE_PATH
+
+echo "SOX .sh file $PROFILE_PATH"
+cat $PROFILE_PATH
