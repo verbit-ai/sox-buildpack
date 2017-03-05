@@ -29,7 +29,7 @@ APP_CHECKOUT_DIR=$1
 #  export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/app/.heroku/vendor/lib
 #EOF
 
-echo "exporting PATH and LIBRARY_PATH" | indent
+echo "exporting PATH and LIBRARY_PATH"
 PROFILE_PATH="$BUILD_DIR/.profile.d/sox.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:/app/.heroku/vendor/bin"' >> $PROFILE_PATH
